@@ -19,9 +19,32 @@ namespace ChampsBeer.Models.Repository
           
             foreach (var item in all)
             {
+                Datum dt = new Datum();
 
-
-
+                dt.style.ibuMin = item.Style.IbuMin;
+                dt.style.ibuMax = item.Style.IbuMax;
+                dt.style.abvMin = item.Style.AbvMin;
+                dt.style.abvMax = item.Style.AbvMax;
+                dt.style.srmMin = item.Style.SrmMin;
+                dt.style.srmMax = item.Style.SrmMax;
+                dt.style.ogMin = item.Style.OgMin;
+                dt.style.ogMax = item.Style.OgMax;
+                dt.style.fgMin = item.Style.FgMin;
+                dt.style.fgMax = item.Style.FgMax;
+                dt.servingTemperatureDisplay = item.ServingTemperatureDisplay;
+                dt.beerVariationId = item.BeerVariationId;
+                dt.statusDisplay = item.StatusDisplay;
+                dt.foodPairings = item.FoodPairings;
+                dt.servingTemperature = item.ServingTemperature;
+                dt.abv = item.Abv;
+                dt.year = item.Year;
+                dt.id = item.Id;
+                dt.originalGravity = item.OriginalGravity;
+                dt.ibu = item.Ibu;
+                dt.isOrganic = item.IsOrganic.ToString();
+                dt.description = item.Description;
+             
+                 lstDatm.Add(dt);
             }
 
             if (lstDatm != null)

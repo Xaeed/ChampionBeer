@@ -65,12 +65,18 @@ namespace ChampsBeer.Models
             
             public Datum()
             {
-                Labels = new Labels();
                 style = new Style();
+                Labels = new Labels();
+                available = new Available();
+                glass = new Glass();
             }
+           
+
+
+            public string LMedium { get; set; }
+            public string LLarge { get; set; }
+            public string Icon { get; set; }
             public string servingTemperatureDisplay { get; set; }
-
-
             public Style style { get; set; }
             public string status { get; set; }
             public string srmId { get; set; }
