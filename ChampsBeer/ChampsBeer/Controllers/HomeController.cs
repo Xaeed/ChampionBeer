@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ChampsBeer.Models.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -8,8 +10,14 @@ namespace ChampsBeer.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            API_Response rsp = new API_Response();
+            
+            ViewBag.all = await rsp.ShowAll();
+
+
+
             return View();
         }
 
