@@ -21,6 +21,25 @@ namespace ChampsBeer.Models.Repository
             {
                 Datum dt = new Datum();
 
+                if (item.Labels != null)
+                {
+                    dt.Labels = new Labels();
+                    Labels l = new Labels();
+                    l.Large = item.Labels.Large;
+                    l.Medium = item.Labels.Medium;
+                    l.Icon = item.Labels.Icon;
+
+                    dt.Labels = l;
+                }
+
+                if (item.Available != null)
+                {
+                    Available a = new Available();
+                    dt.available = new Available();
+                    a.name = item.Available.Name;
+                    dt.available = a;
+                }
+
                 dt.style.ibuMin = item.Style.IbuMin;
                 dt.style.ibuMax = item.Style.IbuMax;
                 dt.style.abvMin = item.Style.AbvMin;
