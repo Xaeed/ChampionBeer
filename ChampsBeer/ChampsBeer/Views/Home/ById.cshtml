@@ -4,10 +4,12 @@
 }
 <div class="container_12">
 
-        @if (ViewBag.all != null)
+    @if(ViewBag.all != null)
         {
             foreach (var item in ViewBag.all)
-            {
+            { 
+
+
                 <div>
                    
                         <div class="content">
@@ -28,8 +30,14 @@
                    
                 </div>
 
-            }
         }
+    }
+    else
+    {
+        <div class="content">Nothing to display here</div>
+
+
+    }
 </div>
 
 

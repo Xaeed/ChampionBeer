@@ -10,8 +10,12 @@ namespace ChampsBeer.Models.Repository
 {
     public class API_Response
     {
-        public async Task<List<Datum>> ShowAll()
+
+#region  to show data from search  parameter 
+        public async Task<List<Datum>> Search()
         {
+            try
+            { 
             string key= System.Configuration.ConfigurationManager.AppSettings["Key"];
           var  all = await BreweryDbFactory<IBeer>.GetData("9c7ec492dc1a9248f78b2672fe67fed9" ,new KeyValuePair<string, string>("ibu", "4")/*,new KeyValuePair<string,string>("Abv","4"), new KeyValuePair<string, string>("StyleId", "2")*/);
             
@@ -72,94 +76,107 @@ namespace ChampsBeer.Models.Repository
 
             if (lstDatm !=null)
             {
-               
-                
                 return await Task.FromResult(lstDatm.ToList());
             }
-
-
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
             return null;
-
-
         }
 
-      
+        #endregion
 
-        
+#region show data by beer id 
         public async Task<List<Datum>> ById( string Id  )
         {
-            string id = Id;
-            string key = System.Configuration.ConfigurationManager.AppSettings["Key"];
-            var all = await BreweryDbFactory<IBeer>.GetData("9c7ec492dc1a9248f78b2672fe67fed9", new KeyValuePair<string, string>("ids", id));
-
-            List<Datum> lstDatm = new List<Datum>();
-
-            foreach (var item in all)
+            if (Id != null)
             {
-                Datum dt = new Datum();
+                try { 
+                string id = Id;
+                string key = System.Configuration.ConfigurationManager.AppSettings["Key"];
+                var all = await BreweryDbFactory<IBeer>.GetData("9c7ec492dc1a9248f78b2672fe67fed9", new KeyValuePair<string, string>("ids", id));
 
-                if (item.Labels != null)
+                List<Datum> lstDatm = new List<Datum>();
+
+                foreach (var item in all)
                 {
-                    dt.Labels = new Labels();
-                    Labels l = new Labels();
-                    l.Large = item.Labels.Large;
-                    l.Medium = item.Labels.Medium;
-                    l.Icon = item.Labels.Icon;
+                    Datum dt = new Datum();
 
-                    dt.Labels = l;
+                    if (item.Labels != null)
+                    {
+                        dt.Labels = new Labels();
+                        Labels l = new Labels();
+                        l.Large = item.Labels.Large;
+                        l.Medium = item.Labels.Medium;
+                        l.Icon = item.Labels.Icon;
+
+                        dt.Labels = l;
+                    }
+
+                    if (item.Available != null)
+                    {
+                        Available a = new Available();
+                        dt.available = new Available();
+                        a.name = item.Available.Name;
+                        dt.available = a;
+                    }
+
+                    dt.style.ibuMin = item.Style.IbuMin;
+                    dt.style.ibuMax = item.Style.IbuMax;
+                    dt.style.abvMin = item.Style.AbvMin;
+                    dt.style.abvMax = item.Style.AbvMax;
+                    dt.style.srmMin = item.Style.SrmMin;
+                    dt.style.srmMax = item.Style.SrmMax;
+                    dt.style.ogMin = item.Style.OgMin;
+                    dt.style.ogMax = item.Style.OgMax;
+                    dt.style.fgMin = item.Style.FgMin;
+                    dt.style.fgMax = item.Style.FgMax;
+                    dt.servingTemperatureDisplay = item.ServingTemperatureDisplay;
+                    dt.beerVariationId = item.BeerVariationId;
+                    dt.statusDisplay = item.StatusDisplay;
+                    dt.foodPairings = item.FoodPairings;
+                    dt.servingTemperature = item.ServingTemperature;
+                    dt.abv = item.Abv;
+                    dt.year = item.Year;
+                    dt.id = item.Id;
+                    dt.originalGravity = item.OriginalGravity;
+                    dt.ibu = item.Ibu;
+                    dt.isOrganic = item.IsOrganic.ToString();
+                    dt.description = item.Description;
+                    dt.name = item.Name;
+
+                    lstDatm.Add(dt);
                 }
 
-                if (item.Available != null)
+                if (lstDatm != null)
                 {
-                    Available a = new Available();
-                    dt.available = new Available();
-                    a.name = item.Available.Name;
-                    dt.available = a;
+
+                    return await Task.FromResult(lstDatm.ToList());
                 }
+                }
+                catch(Exception ex)
+                {
+                    return null;
 
-                dt.style.ibuMin = item.Style.IbuMin;
-                dt.style.ibuMax = item.Style.IbuMax;
-                dt.style.abvMin = item.Style.AbvMin;
-                dt.style.abvMax = item.Style.AbvMax;
-                dt.style.srmMin = item.Style.SrmMin;
-                dt.style.srmMax = item.Style.SrmMax;
-                dt.style.ogMin = item.Style.OgMin;
-                dt.style.ogMax = item.Style.OgMax;
-                dt.style.fgMin = item.Style.FgMin;
-                dt.style.fgMax = item.Style.FgMax;
-                dt.servingTemperatureDisplay = item.ServingTemperatureDisplay;
-                dt.beerVariationId = item.BeerVariationId;
-                dt.statusDisplay = item.StatusDisplay;
-                dt.foodPairings = item.FoodPairings;
-                dt.servingTemperature = item.ServingTemperature;
-                dt.abv = item.Abv;
-                dt.year = item.Year;
-                dt.id = item.Id;
-                dt.originalGravity = item.OriginalGravity;
-                dt.ibu = item.Ibu;
-                dt.isOrganic = item.IsOrganic.ToString();
-                dt.description = item.Description;
-                dt.name = item.Name;
-
-                lstDatm.Add(dt);
+                }
             }
-
-            if (lstDatm != null)
+            else
             {
 
-                return await Task.FromResult(lstDatm.ToList());
+                return   null;
             }
-
 
             return null;
 
-
         }
-
-
+        #endregion
+#region  to show all data 
         public async Task<List<Datum>> ALL()
         {
-            
+            try
+            { 
             string key = System.Configuration.ConfigurationManager.AppSettings["Key"];
             var all = await BreweryDbFactory<IBeer>.GetData("9c7ec492dc1a9248f78b2672fe67fed9", new KeyValuePair<string, string>("ibu", "4"));
 
@@ -219,12 +236,13 @@ namespace ChampsBeer.Models.Repository
 
                 return await Task.FromResult(lstDatm.ToList());
             }
-
-
+            }
+            catch(Exception ex)
+            { 
             return null;
-
-
+            }
+            return null;
         }
-
+#endregion
     }
 }
