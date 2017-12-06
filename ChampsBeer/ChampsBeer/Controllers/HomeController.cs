@@ -15,16 +15,8 @@ namespace ChampsBeer.Controllers
         public async Task<ActionResult> Index()
         {
            
-
-            string a = "J21liv";
-
             ViewBag.all = await rsp.Search();
-
-          
-            ViewBag.Id = await rsp.ById(a);
             
-
-
             return View();
         }
 
