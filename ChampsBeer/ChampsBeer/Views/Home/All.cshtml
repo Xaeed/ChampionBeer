@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "All";
+}
+
+<link href="~/Content/List.css" rel="stylesheet" />
+
+
+<div class="container_12">
+    <ul>
+
+
+        @if (ViewBag.all != null)
+        {
+
+            foreach (var item in ViewBag.all)
+            {
+                if (item.Labels.Large != null)
+                {
+                    <li><a href="@Url.Action("ById","Home",new { Id = item.id },null)"><img src="@item.Labels.Large" width="120" height="120"/></a></li>
+                }
+
+                else
+                {
+                    <li><a href="@Url.Action("ById","Home",new { Id = item.id },null)"><img src="@item.Labels.Large" width="120" height="120" /></a></li>
+                }
+            }
+        }
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

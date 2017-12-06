@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "ById";
+}
+<div class="container_12">
+
+        @if (ViewBag.all != null)
+        {
+            foreach (var item in ViewBag.all)
+            {
+                <div>
+                   
+                        <div class="content">
+                            <img src="@item.Labels.Medium" height="120" width="120" alt="">
+                            <h3></h3>
+                            <p><a href="#" class="tm_link"><b>@item.name</b></a>@item.description</p>
+
+                            <ul>
+                                <li><span>Max Ibu:</span> @item.style.ibuMax</li>
+                                <li><span>Abv:</span> @item.abv</li>
+                                <li><span>ServingTemperature: </span> @item.servingTemperatureDisplay</li>
+                                <li><span>FoodPairings: </span> @item.foodPairings</li>
+                                <li><span>OriginalGravity: </span>@item.originalGravity;</li>
+                                <li><span>Availablility:</span>@item.available.name</li>
+                            </ul>
+                            <div class="alright"><a href="@Url.Action("All", "Home")" class="btn">Read More</a></div>
+                        </div>
+                   
+                </div>
+
+            }
+        }
+</div>
+
+
+

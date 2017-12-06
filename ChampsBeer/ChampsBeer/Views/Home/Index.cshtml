@@ -8,173 +8,113 @@
     <ul class='sets'>
         <li data-setName="Red Wine">
             <ul>
-                <li data-srcPreview="images/red1.jpg">
-                    <div>@if (ViewBag.all != null)
-                    {
-                        foreach (var item in ViewBag.all)
+                @if (ViewBag.all != null)
+            {
+                    <li data-srcPreview="images/red1.jpg">
+                        <div>
+                            @foreach (var item in ViewBag.all)
                         {
-                            <div class="content">
-                            <img src="@item.Labels.Medium" height="120" width="120" alt="">
-                            <h3></h3>
-                            <p><a href="#" class="tm_link"> Click here</a>@item.description</p>
-                            <p>More themes of this kind you can find in the category of premium <a href="#">Food and Drink website templates.</a></p>
-                            <ul>
-                                <li><span>Max Ibu:</span> @item.style.ibuMax</li>
-                                <li><span>Abv:</span> @item.abv</li>
-                                <li><span>ServingTemperature: </span> @item.servingTemperatureDisplay</li>
-                                <li><span>FoodPairings: </span> @item.foodPairings</li>
-                                <li><span>OriginalGravity: </span>@item.originalGravity;</li>
-                                <li><span>Availablility:</span>@item.available.name</li>
-                            </ul>
-                            <div class="alright"><a href="" class="btn">Read More</a></div>
-                        </div>
+                                <div class="content">
+                                    <img src="@item.Labels.Medium" height="120" width="120" alt="">
+                                    <h3></h3>
+                                    <p><a href="#" class="tm_link"><b>@item.name</b></a>@item.description</p>
+
+                                    <ul>
+                                        <li><span>Max Ibu:</span> @item.style.ibuMax</li>
+                                        <li><span>Abv:</span> @item.abv</li>
+                                        <li><span>ServingTemperature: </span> @item.servingTemperatureDisplay</li>
+                                        <li><span>FoodPairings: </span> @item.foodPairings</li>
+                                        <li><span>OriginalGravity: </span>@item.originalGravity;</li>
+                                        <li><span>Availablility:</span>@item.available.name</li>
+                                    </ul>
+                                    <div class="alright"><a href="@Url.Action("All","Home")" class="btn">Show All</a></div>
+                                </div>
 
                         }
+
+                        </div>
+
+                    </li>
+            }
+                
+            </ul>
+        </li>
+        <li data-setName="White Wine">
+
+            @if (ViewBag.all != null)
+              {
+                <ul>
+
+                    <li data-srcPreview="images/red1.jpg">
+
+                        @foreach (var item in ViewBag.all)
+                {
+                            <div>
+                                @if (item.abv == "4")
+                    {
+                                    <div class="content">
+                                        <img src="@item.Labels.Medium" height="120" width="120" alt="">
+                                        <h3></h3>
+                                        <p><a href="#" class="tm_link"> @item.name</a>@item.description</p>
+
+                                        <ul>
+                                            <li><span>Max Ibu:</span> @item.style.ibuMax</li>
+                                            <li><span>Abv:</span> @item.abv</li>
+                                            <li><span>ServingTemperature: </span> @item.servingTemperatureDisplay</li>
+                                            <li><span>FoodPairings: </span> @item.foodPairings</li>
+                                            <li><span>OriginalGravity: </span>@item.originalGravity;</li>
+                                            <li><span>Availablility:</span>@item.available.name</li>
+                                        </ul>
+                                        <div class="alright"><a href="@Url.Action("All","Home")" class="btn">Read More</a></div>
+                                    </div>
                     }
-                    </div>
-                </li>
-                @*<li data-srcPreview="images/red2.jpg">
-                    <div>
-                        <div class="content">
-                            <img src="images/red_wine.jpg" alt="">
-                            <h3>Pinot Noir</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia impedit possimus architecto repellat enim velit alias quis</p>
-                            <p> harum veritatis. Autem quaerat obcaecati quos corporis quasi voluptatum dolores velit laboriosam.</p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>
-                <li data-srcPreview="images/red3.jpg">
-                    <div>
-                        <div class="content">
-                            <h3>Merlot</h3>
-                            <img src="images/red_wine.jpg" alt="">
-                            <p>Duis massa elit, auctor non pellentesque vel, aliquet sit der amet erat. Nullam eget dignissim nisi, aliquam feugiat nibh. </p>
-                            <p>Ut nisi nibh, sagittis ut semper fertilom elementum, pellentesque a odio. Phasellus vitae libero vel justo pretium dignissim. </p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>*@
-            </ul>
+                            </div>
+
+                }
+
+                    </li>
+                </ul>
+                }
         </li>
-        @*<li data-setName="White Wine">
-            <ul>
-                <li data-srcPreview="images/white1.jpg">
-                    <div>
-                        <div class="content">
-                            <img src="images/white_wine.jpg" alt="">
-                            <h3>Chardonnay</h3>
-                            <p>Nullam consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla ullamcper fermentum. In vitae augue, eu. </p>
-                            <p> Etiam dui eros, laoreet sit amet est velewyl commodo venenatis eros. Fusce adipiscing quam id risus sagittis, non lacus interdum.</p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>
-                <li data-srcPreview="images/white2.jpg">
-                    <div>
-                        <div class="content">
-                            <img src="images/white_wine.jpg" alt="">
-                            <h3>Sauvignon Blanc</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia impedit possimus architecto repellat enim velit alias quis</p>
-                            <p> harum veritatis. Autem quaerat obcaecati quos corporis quasi voluptatum dolores velit laboriosam.</p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>
-                <li data-srcPreview="images/white3.jpg">
-                    <div>
-                        <div class="content">
-                            <h3>Moscato</h3>
-                            <img src="images/white_wine.jpg" alt="">
-                            <p>Duis massa elit, auctor non pellentesque vel, aliquet sit der amet erat. Nullam eget dignissim nisi, aliquam feugiat nibh. </p>
-                            <p>Ut nisi nibh, sagittis ut semper fertilom elementum, pellentesque a odio. Phasellus vitae libero vel justo pretium dignissim. </p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
+            
         <li data-setName="Sparkling Wine">
-            <ul>
-                <li data-srcPreview="images/spark1.jpg">
-                    <div>
-                        <div class="content">
-                            <img src="images/sparkl_wine.jpg" alt="">
-                            <h3>Astri</h3>
-                            <p>Nullam consectetur orci sed nulla facilisis consequat. Curabitur vel lorem sit amet nulla ullamcper fermentum. In vitae augue, eu. </p>
-                            <p>Etiam dui eros, laoreet sit amet est velewyl commodo venenatis eros. Fusce adipiscing quam id risus sagittis, non lacus interdum.</p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>
-                <li data-srcPreview="images/spark2.jpg">
-                    <div>
-                        <div class="content">
-                            <img src="images/sparkl_wine.jpg" alt="">
-                            <h3>Prosecco</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia impedit possimus architecto repellat enim velit alias quis</p>
-                            <p> harum veritatis. Autem quaerat obcaecati quos corporis quasi voluptatum dolores velit laboriosam.</p>
-                            <ul>
-                                <li><span>Variety:</span> Mivamus magna</li>
-                                <li><span>Alcohol:</span> Quisque viverra</li>
-                                <li><span>Length/Type of Aging: </span> Etiam dui</li>
-                                <li><span>Oak Types: </span> Phasellus accumsan</li>
-                                <li><span>Bottling Date: </span> Cras facilisis</li>
-                                <li><span>Number of Cases:</span> Aliquam nibh</li>
-                            </ul>
-                            <div class="alright"><a href="#" class="btn">Read More</a></div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>*@
+                
+
+            @if (ViewBag.all != null)
+            {
+                <ul>
+
+                    <li data-srcPreview="images/red1.jpg">
+
+                        @foreach (var item in ViewBag.all)
+                          {
+                            <div>
+                                @if (item.abv == "5")
+                      {
+                                    <div class="content">
+                                        <img src="@item.Labels.Medium" height="120" width="120" alt="">
+                                        <h3></h3>
+                                        <p><a href="#" class="tm_link"><b>@item.name</b></a>@item.description</p>
+
+                                        <ul>
+                                            <li><span>Max Ibu:</span> @item.style.ibuMax</li>
+                                            <li><span>Abv:</span> @item.abv</li>
+                                            <li><span>ServingTemperature: </span> @item.servingTemperatureDisplay</li>
+                                            <li><span>FoodPairings: </span> @item.foodPairings</li>
+                                            <li><span>OriginalGravity: </span>@item.originalGravity;</li>
+                                            <li><span>Availablility:</span>@item.available.name</li>
+                                        </ul>
+                                        <div class="alright"><a href="@Url.Action("All","Home")" class="btn">Read More</a></div>
+                                    </div>
+                                }
+                            </div>
+
+                        }
+
+                    </li>
+                </ul>
+            }
+        </li>
+                   
     </ul>
 </div>
